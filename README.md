@@ -1,4 +1,3 @@
-````md
 # whisper-az
 
 <p align="center">
@@ -249,6 +248,3 @@ Datasets retain their original licenses:
 
 * Common Voice → CC0
 * FLEURS → CC-BY-4.0
-
-```
-```
