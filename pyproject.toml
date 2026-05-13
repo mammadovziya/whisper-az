@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "azerbaijani-asr"
+version = "0.1.0"
+description = "Whisper benchmark + LoRA fine-tune for Azerbaijani speech-to-text"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Ziya Mammadov", email = "ziyamammadov2008@gmail.com" }]
+
+dependencies = [
+    "transformers>=4.46.0",
+    # datasets 4.0 removed script-loading support; google/fleurs still ships a script.
+    "datasets>=3.0.0,<4.0.0",
+    "evaluate>=0.4.3",
+    "jiwer>=3.0.4",
+    "peft>=0.13.0",
+    "accelerate>=1.0.0",
+    "faster-whisper>=1.1.0",
+    "librosa>=0.10.2",
+    "soundfile>=0.12.1",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "tqdm>=4.66",
+    "huggingface-hub>=0.25",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.6",
+    "pytest>=8.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]

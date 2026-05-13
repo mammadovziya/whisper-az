@@ -1,0 +1,81 @@
+[
+  {
+    "model": "whisper-tiny",
+    "dataset": "fleurs",
+    "split": "test",
+    "n_samples": 20,
+    "wer": 0.8722,
+    "cer": 0.5753,
+    "elapsed_seconds": 32.8,
+    "lora_path": null,
+    "timestamp": "2026-05-10T18:05:33Z"
+  },
+  {
+    "model": "whisper-tiny",
+    "dataset": "fleurs",
+    "split": "test",
+    "n_samples": 923,
+    "wer": 1.0179,
+    "cer": 0.5042,
+    "elapsed_seconds": 68.0,
+    "lora_path": null,
+    "timestamp": "2026-05-13T17:13:41Z"
+  },
+  {
+    "model": "whisper-base",
+    "dataset": "fleurs",
+    "split": "test",
+    "n_samples": 923,
+    "wer": 0.8213,
+    "cer": 0.3007,
+    "elapsed_seconds": 64.6,
+    "lora_path": null,
+    "timestamp": "2026-05-13T19:41:54Z"
+  },
+  {
+    "model": "whisper-small",
+    "dataset": "fleurs",
+    "split": "test",
+    "n_samples": 923,
+    "wer": 0.5165,
+    "cer": 0.1443,
+    "elapsed_seconds": 160.7,
+    "lora_path": null,
+    "timestamp": "2026-05-13T19:44:49Z"
+  },
+  {
+    "model": "whisper-medium",
+    "dataset": "fleurs",
+    "split": "test",
+    "n_samples": 923,
+    "wer": 0.3433,
+    "cer": 0.0899,
+    "elapsed_seconds": 597.2,
+    "lora_path": null,
+    "timestamp": "2026-05-13T19:55:03Z"
+  },
+  {
+    "model": "whisper-large-v3",
+    "dataset": "fleurs",
+    "split": "test",
+    "n_samples": 923,
+    "wer": 0.2171,
+    "cer": 0.0592,
+    "elapsed_seconds": 0.0,
+    "lora_path": null,
+    "transcripts_path": "results\\transcripts\\whisper-large-v3_fleurs_test.json",
+    "timestamp": "2026-05-13T22:59:22Z"
+  },
+  {
+    "model": "mms-1b-all/azj-script_latin",
+    "dataset": "fleurs",
+    "split": "test",
+    "n_samples": 923,
+    "wer": 0.2375,
+    "cer": 0.0525,
+    "elapsed_seconds": 90.7,
+    "lora_path": null,
+    "transcripts_path": "results\\transcripts\\mms-1b-all-azj-script_latin_fleurs_test.json",
+    "timestamp": "2026-05-13T23:04:50Z"
+  }
+]

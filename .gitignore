@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.python-version
+
+# Build / dist
+build/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Project artifacts
+models/
+!models/.gitkeep
+.cache/
+hf_cache/
+*.log
+wandb/
+
+# Raw datasets (large; CV via Mozilla Data Collective is per-user-licensed,
+# do NOT commit any of it). Keep results/transcripts/ since those are derived
+# text artifacts and useful for reproducibility.
+data/
+results/transcripts/_tmp_*.json
+
+# OS
+.DS_Store
+Thumbs.db
