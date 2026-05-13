@@ -1,75 +1,254 @@
-# Azerbaijani Whisper ASR — Benchmark & LoRA Fine-Tune
+````md
+# whisper-az
 
-A reproducible benchmark of OpenAI Whisper (`tiny` → `large-v3`) plus Meta MMS-1B on Azerbaijani speech, and a LoRA-fine-tuned `whisper-small-az` adapter trained on Common Voice.
+<p align="center">
+  Azerbaijani ASR benchmark for Whisper and MMS-1B
+</p>
 
-## Why
+<p align="center">
+  Benchmarking OpenAI Whisper (`tiny` → `large-v3`) on Azerbaijani speech + LoRA fine-tuning experiments.
+</p>
 
-Azerbaijani (`az`, ~10M speakers) is a low-resource Turkic language. Whisper claims `az` support since v2, but no public benchmark documents how well the various sizes actually transcribe Azerbaijani, where they fail, or whether modest fine-tuning helps. This repo fills that gap.
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.10+-blue">
+  <img src="https://img.shields.io/badge/CUDA-12.8-green">
+  <img src="https://img.shields.io/badge/license-Apache_2.0-orange">
+  <img src="https://img.shields.io/badge/status-research-informational">
+</p>
 
-## Status
+---
 
-Work in progress — see [`paper.md`](paper.md) for the running writeup and [`results/benchmark.json`](results/benchmark.json) for the latest numbers.
+## The Problem
 
-## Install
+OpenAI Whisper officially supports Azerbaijani (`az`), but there is almost no public evaluation showing:
 
-This project targets Python 3.10+ on a CUDA-capable GPU (developed on RTX 5070 Laptop, 8 GB VRAM, Blackwell / CUDA 12.6+).
+- how well different Whisper sizes actually work
+- where smaller models fail
+- how strong multilingual interference is
+- whether lightweight fine-tuning improves performance
 
-**1. PyTorch with the right CUDA build** — install separately from PyPI's CUDA index because the right wheel depends on your driver. For Blackwell (RTX 50-series, compute capability `sm_120`):
+This repository benchmarks Whisper (`tiny` → `large-v3`) and Meta MMS-1B on Azerbaijani speech and provides a LoRA fine-tuned Whisper adapter trained on Common Voice.
 
-```powershell
-pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu128
+---
+
+## Current Findings
+
+Initial experiments show that Azerbaijani performance scales dramatically with Whisper model size.
+
+Smaller multilingual models exhibit:
+
+- severe Turkish orthographic interference
+- missing Azerbaijani diacritics
+- dropped suffixes
+- unstable word segmentation
+
+while `whisper-large-v3` and MMS-1B become substantially more usable.
+
+---
+
+## Benchmark Results (FLEURS Azerbaijani)
+
+Evaluation on the FLEURS `az_az` test split (`n = 923`).
+
+| Model | Params | WER ↓ | CER ↓ | Runtime |
+|---|---:|---:|---:|---:|
+| Whisper Tiny | 39M | 101.8% | 50.4% | 68s |
+| Whisper Base | 74M | 82.1% | 30.1% | 65s |
+| Whisper Small | 244M | 51.7% | 14.4% | 161s |
+| Whisper Medium | 769M | 34.3% | 9.0% | 597s |
+| Whisper Large-v3 | 1550M | **21.7%** | 5.9% | — |
+| MMS-1B (Azerbaijani) | 1B | 23.8% | **5.3%** | 91s |
+
+### Key Observations
+
+- Small Whisper models perform very poorly on Azerbaijani.
+- Accuracy improves almost monotonically with model scale.
+- `whisper-large-v3` achieves the best WER.
+- MMS-1B achieves slightly better CER despite worse WER.
+- Character-level accuracy improves much faster than word-level accuracy.
+
+Source-of-truth results are stored in:
+
+```text
+results/benchmark.json
+````
+
+---
+
+## Example Transcription
+
+Ground truth:
+
+```text
+Mən sabah universitetə gedəcəyəm.
 ```
 
-> ⚠️ Blackwell needs **cu128 or cu130** wheels, not cu126. The cu126 build only includes kernels up to sm_90 (Hopper) and will warn `sm_120 is not compatible` on RTX 50-series.
+Whisper Tiny:
 
-For older NVIDIA cards, swap `cu128` for `cu121` or whatever matches your driver.
+```text
+Ben sabah üniversiteye gideceğim.
+```
 
-**2. The rest**
+Whisper Large-v3:
 
-```powershell
+```text
+Mən sabah universitetə gedəcəyəm.
+```
+
+This highlights a common failure mode in smaller multilingual models:
+Turkish interference replacing Azerbaijani orthography.
+
+---
+
+## Project Goals
+
+* Benchmark Whisper on Azerbaijani speech
+* Compare scaling behavior across model sizes
+* Analyze linguistic failure modes
+* Evaluate MMS-1B as a multilingual baseline
+* Test parameter-efficient adaptation (LoRA)
+* Provide reproducible evaluation scripts
+
+---
+
+## Repository Layout
+
+```text
+src/
+  data.py             # CV-17 (az) and FLEURS (az_az) loaders
+  benchmark.py        # Whisper tiny..large-v3 benchmark
+  eval_mms.py         # MMS-1B baseline evaluation
+  train_lora.py       # PEFT/LoRA fine-tuning
+  analyze_errors.py   # error analysis pipeline
+  push_to_hub.py      # Hugging Face upload helper
+
+results/
+  benchmark.json
+  error_analysis.csv
+  transcripts/
+
+models/
+  whisper-small-az-lora/
+```
+
+---
+
+## Quickstart
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourname/whisper-az.git
+cd whisper-az
+```
+
+Install dependencies:
+
+```bash
 pip install -e .
 ```
 
-## Layout
+---
 
+## GPU Notes
+
+Developed and tested on:
+
+* RTX 5070 Laptop GPU
+* CUDA 12.8
+* Python 3.10+
+
+For Blackwell GPUs (RTX 50-series), install PyTorch with cu128 or newer:
+
+```bash
+pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu128
 ```
-src/
-  data.py             # CV-17 (az) and FLEURS (az_az) loaders + shared text normalizer
-  benchmark.py        # Whisper tiny..medium via HF + large-v3 via faster-whisper
-  eval_mms.py         # MMS-1B baseline
-  train_lora.py       # PEFT/LoRA fine-tune on CV-az
-  analyze_errors.py   # error dump + manual taxonomy
-  push_to_hub.py      # HF upload helper
-results/
-  benchmark.json      # canonical WER/CER table
-  error_analysis.csv  # categorized FLEURS-az errors
-models/
-  whisper-small-az-lora/   # fine-tuned LoRA adapter (gitignored; on HF Hub)
-```
 
-## Reproduce
+> RTX 50-series GPUs require `cu128+` wheels because older builds do not include `sm_120` kernels.
 
-```powershell
-# Smoke test: ~5 min
+---
+
+## Reproducing Results
+
+### Smoke Test
+
+```bash
 python -m src.benchmark --model whisper-tiny --dataset fleurs --max-samples 20
+```
 
-# Full benchmark: ~3-6 h on RTX 5070
+### Full Whisper Benchmark
+
+```bash
 python -m src.benchmark --model all --dataset all
+```
 
-# MMS baseline
+### MMS-1B Baseline
+
+```bash
 python -m src.eval_mms --dataset all
+```
 
-# LoRA fine-tune (~6-10 h on RTX 5070)
+### LoRA Fine-Tuning
+
+```bash
 python -m src.train_lora
+```
 
-# Re-evaluate fine-tuned model
+### Evaluate Fine-Tuned Model
+
+```bash
 python -m src.benchmark --model whisper-small-az-lora --dataset all
 ```
 
-## Results
+---
 
-Will be filled in as runs complete. See [`results/benchmark.json`](results/benchmark.json) for the source-of-truth numbers.
+## Datasets
+
+### Common Voice 17
+
+Used for:
+
+* LoRA fine-tuning
+* additional evaluation
+
+License:
+
+* CC0
+
+### FLEURS Azerbaijani (`az_az`)
+
+Used for:
+
+* multilingual benchmark evaluation
+* cross-model comparison
+
+License:
+
+* CC-BY-4.0
+
+---
+
+## Planned Work
+
+* Add Common Voice benchmark tables
+* Publish LoRA checkpoints
+* Add inference speed / VRAM benchmarks
+* Expand linguistic error taxonomy
+* Evaluate distillation approaches
+* Compare against SeamlessM4T and Canary
+
+---
 
 ## License
 
-Apache 2.0 for code. Datasets retain their original licenses (Common Voice CC0, FLEURS CC-BY-4.0).
+Code:
+
+* Apache 2.0
+
+Datasets retain their original licenses:
+
+* Common Voice → CC0
+* FLEURS → CC-BY-4.0
+
+```
+```
