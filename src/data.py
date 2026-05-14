@@ -20,8 +20,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
+import csv
+
 import numpy as np
-import pandas as pd
 from datasets import Audio, Dataset, load_dataset
 from transformers.models.whisper.english_normalizer import BasicTextNormalizer
 
@@ -51,7 +52,15 @@ class Sample:
 
 
 def _load_cv25_local(split: Split) -> Dataset:
-    """Load Common Voice 25.0 az from the extracted MDC tarball at CV25_ROOT."""
+    """Load Common Voice 25.0 az from the extracted MDC tarball at CV25_ROOT.
+
+    We avoid `Dataset.from_pandas` here because modern pandas encodes string columns
+    as pyarrow `large_string`, which `Audio.cast_storage` refuses to cast
+    (`ArrowNotImplementedError: Unsupported cast from large_string to struct`).
+    Going through `Dataset.from_dict` with Python str values produces plain `string`
+    columns, which cast to Audio cleanly. CV TSVs are small (<1 MB), so reading via
+    the csv module is plenty fast.
+    """
     if split not in CV25_SPLIT_FILE:
         raise ValueError(f"Unknown CV split: {split!r}")
     tsv_path = CV25_ROOT / CV25_SPLIT_FILE[split]
@@ -60,13 +69,27 @@ def _load_cv25_local(split: Split) -> Dataset:
             f"Expected CV-25 split file at {tsv_path}. "
             "Did you extract the MDC tarball into data/cv25-az/?"
         )
-    # `quoting=3` == csv.QUOTE_NONE — CV transcripts contain bare quotes and apostrophes
-    # that would otherwise trip pandas's default quote handling.
-    df = pd.read_csv(tsv_path, sep="\t", encoding="utf-8", quoting=3, dtype=str).fillna("")
-    df["audio"] = df["path"].apply(lambda p: str((CV25_ROOT / "clips" / p).resolve()))
-    df = df.rename(columns={"sentence": "reference"})
-    cols = ["audio", "reference", "path", "client_id", "sentence_id"]
-    ds = Dataset.from_pandas(df[cols], preserve_index=False)
+    audio: list[str] = []
+    reference: list[str] = []
+    path: list[str] = []
+    client_id: list[str] = []
+    sentence_id: list[str] = []
+    with tsv_path.open(encoding="utf-8", newline="") as f:
+        # quoting=QUOTE_NONE — CV transcripts contain bare quotes that aren't pair-delimiters.
+        reader = csv.DictReader(f, delimiter="\t", quoting=csv.QUOTE_NONE)
+        for row in reader:
+            audio.append(str((CV25_ROOT / "clips" / row["path"]).resolve()))
+            reference.append(row.get("sentence", "") or "")
+            path.append(row["path"])
+            client_id.append(row.get("client_id", "") or "")
+            sentence_id.append(row.get("sentence_id", "") or "")
+    ds = Dataset.from_dict({
+        "audio": audio,
+        "reference": reference,
+        "path": path,
+        "client_id": client_id,
+        "sentence_id": sentence_id,
+    })
     return ds
 
 
