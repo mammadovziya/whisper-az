@@ -1,25 +1,87 @@
 [
   {
-    "model": "whisper-tiny",
-    "dataset": "fleurs",
+    "model": "mms-1b-all/azj-script_latin",
+    "dataset": "common_voice",
     "split": "test",
-    "n_samples": 20,
-    "wer": 0.8722,
-    "cer": 0.5753,
-    "elapsed_seconds": 32.8,
+    "n_samples": 126,
+    "wer": 0.2825,
+    "cer": 0.063,
+    "elapsed_seconds": 15.1,
     "lora_path": null,
-    "timestamp": "2026-05-10T18:05:33Z"
+    "transcripts_path": "results\\transcripts\\mms-1b-all-azj-script_latin_common_voice_test.json",
+    "timestamp": "2026-05-14T04:37:45Z"
+  },
+  {
+    "model": "whisper-base",
+    "dataset": "common_voice",
+    "split": "test",
+    "n_samples": 126,
+    "wer": 1.0203,
+    "cer": 0.4459,
+    "elapsed_seconds": 11.8,
+    "lora_path": null,
+    "transcripts_path": "results\\transcripts\\whisper-base_common_voice_test.json",
+    "timestamp": "2026-05-14T04:35:07Z"
+  },
+  {
+    "model": "whisper-large-v3",
+    "dataset": "common_voice",
+    "split": "test",
+    "n_samples": 126,
+    "wer": 0.2652,
+    "cer": 0.0686,
+    "elapsed_seconds": 0.0,
+    "lora_path": null,
+    "transcripts_path": "results\\transcripts\\whisper-large-v3_common_voice_test.json",
+    "timestamp": "2026-05-14T04:36:37Z"
+  },
+  {
+    "model": "whisper-medium",
+    "dataset": "common_voice",
+    "split": "test",
+    "n_samples": 126,
+    "wer": 0.4207,
+    "cer": 0.1224,
+    "elapsed_seconds": 41.0,
+    "lora_path": null,
+    "transcripts_path": "results\\transcripts\\whisper-medium_common_voice_test.json",
+    "timestamp": "2026-05-14T04:36:19Z"
+  },
+  {
+    "model": "whisper-small",
+    "dataset": "common_voice",
+    "split": "test",
+    "n_samples": 126,
+    "wer": 0.628,
+    "cer": 0.2002,
+    "elapsed_seconds": 16.0,
+    "lora_path": null,
+    "transcripts_path": "results\\transcripts\\whisper-small_common_voice_test.json",
+    "timestamp": "2026-05-14T04:35:30Z"
   },
   {
     "model": "whisper-tiny",
+    "dataset": "common_voice",
+    "split": "test",
+    "n_samples": 126,
+    "wer": 1.0173,
+    "cer": 0.6223,
+    "elapsed_seconds": 10.7,
+    "lora_path": null,
+    "transcripts_path": "results\\transcripts\\whisper-tiny_common_voice_test.json",
+    "timestamp": "2026-05-14T04:34:48Z"
+  },
+  {
+    "model": "mms-1b-all/azj-script_latin",
     "dataset": "fleurs",
     "split": "test",
     "n_samples": 923,
-    "wer": 1.0179,
-    "cer": 0.5042,
-    "elapsed_seconds": 68.0,
+    "wer": 0.2375,
+    "cer": 0.0525,
+    "elapsed_seconds": 90.7,
     "lora_path": null,
-    "timestamp": "2026-05-13T17:13:41Z"
+    "transcripts_path": "results\\transcripts\\mms-1b-all-azj-script_latin_fleurs_test.json",
+    "timestamp": "2026-05-13T23:04:50Z"
   },
   {
     "model": "whisper-base",
@@ -31,28 +93,6 @@
     "elapsed_seconds": 64.6,
     "lora_path": null,
     "timestamp": "2026-05-13T19:41:54Z"
-  },
-  {
-    "model": "whisper-small",
-    "dataset": "fleurs",
-    "split": "test",
-    "n_samples": 923,
-    "wer": 0.5165,
-    "cer": 0.1443,
-    "elapsed_seconds": 160.7,
-    "lora_path": null,
-    "timestamp": "2026-05-13T19:44:49Z"
-  },
-  {
-    "model": "whisper-medium",
-    "dataset": "fleurs",
-    "split": "test",
-    "n_samples": 923,
-    "wer": 0.3433,
-    "cer": 0.0899,
-    "elapsed_seconds": 597.2,
-    "lora_path": null,
-    "timestamp": "2026-05-13T19:55:03Z"
   },
   {
     "model": "whisper-large-v3",
@@ -67,15 +107,36 @@
     "timestamp": "2026-05-13T22:59:22Z"
   },
   {
-    "model": "mms-1b-all/azj-script_latin",
+    "model": "whisper-medium",
     "dataset": "fleurs",
     "split": "test",
     "n_samples": 923,
-    "wer": 0.2375,
-    "cer": 0.0525,
-    "elapsed_seconds": 90.7,
+    "wer": 0.3433,
+    "cer": 0.0899,
+    "elapsed_seconds": 597.2,
     "lora_path": null,
-    "transcripts_path": "results\\transcripts\\mms-1b-all-azj-script_latin_fleurs_test.json",
-    "timestamp": "2026-05-13T23:04:50Z"
+    "timestamp": "2026-05-13T19:55:03Z"
+  },
+  {
+    "model": "whisper-small",
+    "dataset": "fleurs",
+    "split": "test",
+    "n_samples": 923,
+    "wer": 0.5165,
+    "cer": 0.1443,
+    "elapsed_seconds": 160.7,
+    "lora_path": null,
+    "timestamp": "2026-05-13T19:44:49Z"
+  },
+  {
+    "model": "whisper-tiny",
+    "dataset": "fleurs",
+    "split": "test",
+    "n_samples": 923,
+    "wer": 1.0179,
+    "cer": 0.5042,
+    "elapsed_seconds": 68.0,
+    "lora_path": null,
+    "timestamp": "2026-05-13T17:13:41Z"
   }
 ]

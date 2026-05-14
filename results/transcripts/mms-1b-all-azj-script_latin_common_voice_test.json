@@ -1,0 +1,638 @@
+{
+  "model": "mms-1b-all/azj-script_latin",
+  "dataset": "common_voice",
+  "split": "test",
+  "n_samples": 126,
+  "samples": [
+    {
+      "sample_id": "cv25-common_voice_az_30644804.mp3",
+      "reference": "Eşq şeirlərindən əlavə din və təsəvvüf ilə bağlı şeirləri də vardır.",
+      "hypothesis": "eşk şerlərindən ələvə din və təsəvvüf ilə bağlı şeyləri davardır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_34229675.mp3",
+      "reference": "Orta məktəbi bitirdikdən sonra Ukraynanın Lvov şəhərində hərbi xidmətdə olmuşdur.",
+      "hypothesis": "orta məktəbdi bitirdikdən sonra ukraynanın üvov şəhərində hərbi xidmətdə olmuşdur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43516603.mp3",
+      "reference": "Hal hazırda Xəzər kanalında prodüser olaraq işinə davam edir.",
+      "hypothesis": "hal hazırda xəzər kanalında prodüser olaraq işinə davam edir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_42550087.mp3",
+      "reference": "Təpə Antarktidada yerləşən Start burnunun adını daşıyır.",
+      "hypothesis": "təpə antarktidada yerləşən start urnunun adını daşıyır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_32296128.mp3",
+      "reference": "Lənkəran şəhərində dəfn olunub.",
+      "hypothesis": "lənkaran şəhərində dəf novad"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43107780.mp3",
+      "reference": "Onların qalıqlarına Çin və Özbəkistan ərazilərində aşkarlanmışdır.",
+      "hypothesis": "onların qaloqlarına çinne özbəkistan əvazivərində aşkarıeklir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_41030974.mp3",
+      "reference": "Ətrafdakı ərazilərlə müqayisədə dumanlı və qar örtüyü olan günlərin sayı daha çoxdur.",
+      "hypothesis": "ətrafdakı ərazilərlə müqayisədə dumanlı və qar örtüy olan günlərin sayı daha çoxdur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_41232414.mp3",
+      "reference": "Yeni Azərbaycan Partiyasının fəal üzvüdür.",
+      "hypothesis": "yeni azərbaycan partiyasının fəal özürüdür"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_28841680.mp3",
+      "reference": "Qədim alban tarixinin izləri bu ərazidə bir çox yerlərdə var.",
+      "hypothesis": "bədin alban tarixinin izləri bik ərzi də bir çox yerlərə var"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_28841731.mp3",
+      "reference": "Kəndin yerində müasir qəsəbənin inşası planlaşdırılırdı.",
+      "hypothesis": "kəndin yerində müasir qəsəbənin inşası bilənləşdirilirdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_42351935.mp3",
+      "reference": "Sakinlər tarixi abidələrə çox həssaslıqla yanaşırlar.",
+      "hypothesis": "takinlər tarixi abidələrə çox həssaslığa yanaşıl"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_42351936.mp3",
+      "reference": "Rusiyaya qayıtdıqdan sonra teatr və kino sahəsində çalışmışdır.",
+      "hypothesis": "rusiya qayıtdıqdan sonra teatr va keno sahəsinə çalışmışdur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37445600.mp3",
+      "reference": "Papanın xahişini qəbul edən Attila geri döndü.",
+      "hypothesis": "papanın xahişnin qəbl idən atilla geri döndü"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37445601.mp3",
+      "reference": "İdman həyatı başa çatdıqdan sonra Torpe ailəsini saxlamaq üçün çalışmışdır.",
+      "hypothesis": "i̇dman həyatı baraçatdıqdan sonra torpe ailəsini saxlamaq üçün çalışmışdır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30651706.mp3",
+      "reference": "Jurnalistlər hekayələrinin əyləncəli hala gəlməsinə səbəb olan müəyyən bir məsələdə faktlar ata bilərlər.",
+      "hypothesis": "jurnalistlər hekayələrinin əyləncəli hala gəlməsini səbəb olan müəyyən bir məsələdə faqlar ata bilərlər"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30651707.mp3",
+      "reference": "Onu Ran Min adlı qardaşlığı öldürmüşdü.",
+      "hypothesis": "onu ram min adı qardaşlığı öldürmüşdü"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658645.mp3",
+      "reference": "Yarada iki əsas dəyişiklik baş verir.",
+      "hypothesis": "yarada iki səs dəyişiklik baş verir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658646.mp3",
+      "reference": "Komsomol gölü yaxınlığında yerləşən mərkəzdən kifayət qədər aralıda yerləşir.",
+      "hypothesis": "komsomol gölü yaxınlığında yerləşən mərkəzdən kifayət qədər aralda yerləşir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36638179.mp3",
+      "reference": "Film iki seriyadan ibarətdir.",
+      "hypothesis": "film iki seriyadan ibarətdir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36638181.mp3",
+      "reference": "Bunun səbəbləri müxtəlifdir.",
+      "hypothesis": "bunun səbəbləri müxtəlifdir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_38555101.mp3",
+      "reference": "Bəyazid taxta keçdikdən sonra İshaq Paşanı yenidən sədrəzəm seçdi.",
+      "hypothesis": "bəyazit taxta keçdikdən sonra hisaq paşanı yenidən södrəzəm seçdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_38555102.mp3",
+      "reference": "Salar təxəllüsü ilə ruh aləminə uyğun şeirlər yazırdı.",
+      "hypothesis": "salar təxəllüsü ilə ruh aləminə uyğun şeyirlər yazırdı"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_38555103.mp3",
+      "reference": "Cavabında kazaklar narazı şəxsləri quyuya ataraq öldürdülər.",
+      "hypothesis": "cavabında kazaklar narazı şəxsləri quyuya ataraq öldürdülər"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_38555104.mp3",
+      "reference": "Netflix nədir?",
+      "hypothesis": "net fliks nədir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_38206777.mp3",
+      "reference": "Müsabiqədən sonra onu artıq hamı tanımağa başlayır.",
+      "hypothesis": "müsabiqədən sonra onu artıq xamı tanımağa başlayır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_38206778.mp3",
+      "reference": "İnsanlar və heyvanların bitkilərlə zəhərlənməsi müxtəlif səbəblərdən baş verə bilər.",
+      "hypothesis": "i̇nsanlar və həyvanların bitkilərlə zəhərlənməsi müxtəlif səbəblərdən baş verə bilər"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_38206779.mp3",
+      "reference": "Həmin il Yaponiya Misirin müstəqilliyini tanımışdır.",
+      "hypothesis": "həmin il yaponiya misirin müstəqiliyini tanımışdır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_38206780.mp3",
+      "reference": "Beş uşaq atası idi.",
+      "hypothesis": "beş uşaq atası idi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_27426027.mp3",
+      "reference": "Film Türkiyə yazıçısı Nazim Hikmətin eyniadlı əsərinin motivləri əsasında yaradılmışdır.",
+      "hypothesis": "film türkiyə yazısı nazim hekmətin yeni adlı əsərinin motivləri əsasında yaradılmışdır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_27426028.mp3",
+      "reference": "Yuxarı axarlarda bataqlaşmış ərazidən axır və suyu dayaz olur.",
+      "hypothesis": "yuxarı axarlarda bataqlaşmış ərazidən axır və süyü dayaz olur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_27426029.mp3",
+      "reference": "Ölkə ərazisindən axan Niger çayının adı ilə adlanır.",
+      "hypothesis": "ölkə ərazisində axan nicer çayının adi ilə adlanır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_27426031.mp3",
+      "reference": "Elə orta məktəbi də həmin kənddə bitirib.",
+      "hypothesis": "elə orta məktəbi də həmin çənddə bitirib"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40603073.mp3",
+      "reference": "Daha sonra həmin məktəbin direktoru olur.",
+      "hypothesis": "daha sonra həmin məc təbin direktoru oludur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40603074.mp3",
+      "reference": "Atası qızına mükəmməl təhsil vermək arzusunda idi.",
+      "hypothesis": "atası qızına mükəmmil təhsil vermək arzusunda idı"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40603076.mp3",
+      "reference": "Turizm qoruq ətrafındakı bütün ərazilərin inkişafının əsas sahəsidir.",
+      "hypothesis": "turizm koruq ətrafındakı bütün ərazilər inkişafının əsas sahəsidir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40603077.mp3",
+      "reference": "Hər yeddi ildən bir keçirilir.",
+      "hypothesis": "hər yeddi ildən bir çetirilir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30416717.mp3",
+      "reference": "Qrup artıq fəaliyyətini dayandırmışdır.",
+      "hypothesis": "qrup artıq fəaliyyətini dayandırmışdır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30416718.mp3",
+      "reference": "İyunun əvvəlində çiçəkləyir.",
+      "hypothesis": "i̇unun əvvəlində çiçəkləyir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30416719.mp3",
+      "reference": "Bundan sonra isə körpü bərpa edilməmişdir.",
+      "hypothesis": "bundan sonra isə körpü bərpa edilməmişdir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30416720.mp3",
+      "reference": "Dinozavrlar arasında ən uzun boyuna malik imiş.",
+      "hypothesis": "dinozavrlar arasında ən uzun boyuna malikimiş"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30416721.mp3",
+      "reference": "Qurultayda Azərbaycanın bütün bölgələrini və tədris müəssisələrini təmsil edən nümayəndələr iştirak edirdilər.",
+      "hypothesis": "qurultayda azərbaycanın bütün bölgələrini və tədris müəsisələrini təmis edən nümayinlərə iştirak edirdilər"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474176.mp3",
+      "reference": "Ölkə müsabiqədə iştirak etdiyi illər ərzində heç vaxt qalib olmamışdır.",
+      "hypothesis": "ölkə müsabiqədə iştirak etdiyilər ərsində heç vaxt qalib olmamışdır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474177.mp3",
+      "reference": "Ortada qalan meydançanın iki tərəfini tağlar və onların arxasında yerləşən otaqlar təşkil edir.",
+      "hypothesis": "ortada qalan medanşanın iki tərəfini tağlar və onların arasında yerləşən otaqlar təşkil edir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474178.mp3",
+      "reference": "Dəmirçilər Tərtər rayonunun eyniadlı inzibati ərazi vahidində kənd.",
+      "hypothesis": "dəmirçilər tərtər rayonunun eynadlı inzibati ərasi vahidində kənd"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474179.mp3",
+      "reference": "Mağaraların girəcəyində aşkar edilmiş mədəni təbəqə qalıqları onların qədim insan məskənləri olduğunu göstərir.",
+      "hypothesis": "mağaraların girəcəyində aşkar edilmiş mədəni təbəqə qalıqları onların qədim insan məskənləri olduğunu göstərir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474180.mp3",
+      "reference": "İlk işi Şabran şəhərini ələ keçirmək oldu.",
+      "hypothesis": "i̇l kişi şabran şəhərini ələ keçirmək oldu"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_29987070.mp3",
+      "reference": "Əli Amir uşaq yaşlarında ailəsi ilə birlikdə İsrailə köç edib.",
+      "hypothesis": "əli amir uşaq yaşlarında ailəsi ilə birlikdə i̇srailə köç edib"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_29987078.mp3",
+      "reference": "Kanalda İngilis və İspan dillərdə proqramlar nümayiş olunur.",
+      "hypothesis": "kanalda i̇ngilis və i̇span dillərdə proqrəmlər nümayiş olunur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_29987089.mp3",
+      "reference": "Təhsilini davam etdirmək istəsə də mümkün olmayıb.",
+      "hypothesis": "təhsilini davam etdirmək istəsə də mümkün olmayıb"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_29987092.mp3",
+      "reference": "Cənubi Koreyada.",
+      "hypothesis": "cnubi kryada"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_29987093.mp3",
+      "reference": "Müxtəlif illərdə fərqli sahələrdə iş fəaliyyətinə başlayır.",
+      "hypothesis": "müxtəlif illərdə fərqli sahələrdə iş fəaliyyətinə başlayır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37653110.mp3",
+      "reference": "Kolbasa tam və ya doğranmış şəkildə servis edilir.",
+      "hypothesis": "kalbasa tam və ya doğranmış şəkildə servis edilir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37653111.mp3",
+      "reference": "Çar ordusunda zabit kimi xidmət etmişdi.",
+      "hypothesis": "çar ordusunda zabit kimi xidmət etmişdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37653112.mp3",
+      "reference": "Adada göl yoxdur.",
+      "hypothesis": "adada göl yoxdur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37653113.mp3",
+      "reference": "Bayraq mərasimi himnin sonu və cavabdeh müəllimin əmri ilə başa çatır.",
+      "hypothesis": "bayraq mərasimi himinin sonu və cavabte müəllimin əmri ilə başa çatır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37653114.mp3",
+      "reference": "Orta əsrlərdə geniş yayılmış bu oyun klassik ədəbiyyatımızın nümunələrindən də bəllidir.",
+      "hypothesis": "orta əsrlərdə geniş yayılmış boyun klassik ədəbiyyatımızın vümunələrindən də bəllidir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30574004.mp3",
+      "reference": "İngiltərədə nəşr edilmiş bu \"Divan\"da məhəbbət lirikası üstünlük təşkil edirdi.",
+      "hypothesis": "i̇ngil tərədənəşr edilmiş bu divanda məhəbbət lirikası üstünlük təşkil edirdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30574005.mp3",
+      "reference": "Gürcüstan hökumət qüvvələri tez bir zamanda Abxaziyanın böyük bir hissəsinə nəzarəti bərpa etdi.",
+      "hypothesis": "gürcüstan hökumət qüvvələri tez bir zamanda abğalyanın böyük bir hissəsinə nəzarəti bərpa etdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30574006.mp3",
+      "reference": "Bundan başqa Xızır Nəbi \"Aşıq Qərib\" dastanının Azərbaycan versiyasının qəhrəmanıdır.",
+      "hypothesis": "bundan başqa xızır nəbi aşıq qərib dastanının azərbaycan versiyasının qəhramanıdır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30574007.mp3",
+      "reference": "Hindistanla Rusiya arasındakı strateji tərəfdaşlıq beş sahəni əhatə edir.",
+      "hypothesis": "i̇ndistanla rusiya arasında strateji tərəfdaşlıq beş sahəni əhatə edir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_30574008.mp3",
+      "reference": "Qəsəbə adını oradakı eyniadlı çayın adından almışdır.",
+      "hypothesis": "qəsəbə adını oradakı eynaadlı çayın aldından almışdır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43516613.mp3",
+      "reference": "Lena çayın sağ sahilində yerləşir.",
+      "hypothesis": "lena çayın sat sahilində yerləşir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43516614.mp3",
+      "reference": "Ağstafa rayonunun Muğanlı kəndində dəfn olunub.",
+      "hypothesis": "ağstafa rayonunun muğanlı kəndində dəfn olunub"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43516617.mp3",
+      "reference": "Bir oğul övladı var.",
+      "hypothesis": "pir ğol övladı var"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43516622.mp3",
+      "reference": "Əsasən qar suları və yeraltı sularla qidalanır.",
+      "hypothesis": "əsasən qar suları və yer altı sularla qidalanır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43516623.mp3",
+      "reference": "Humanizm tərəfdarı deyildi.",
+      "hypothesis": "homanizm təraftarı deyitdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43516624.mp3",
+      "reference": "Əsasən dağlıq ərazidir.",
+      "hypothesis": "əsasə dağlıq ərazi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37772750.mp3",
+      "reference": "İmişli şəhərində dəfn olunub.",
+      "hypothesis": "i̇mişli şəhərində dəfn olunub"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37772752.mp3",
+      "reference": "Həmin dövrdən indiyədək Heydər Əliyev adına Saraya ləyaqətlə rəhbərlik edir.",
+      "hypothesis": "həmin dövrdən indianədək heydərəliye vadına saraya ləyaqətlə rəhbərlik edir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37772755.mp3",
+      "reference": "Hər iki xəstəliyi aradan qaldıra bildi.",
+      "hypothesis": "hər iki xəssəliyi aradan qaldıra bildi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37772757.mp3",
+      "reference": "Şəhər alim və ixtiraçı Nikola Teslanın doğulduğu yerdir.",
+      "hypothesis": "şəhər alim və ixtiratli nikola teslanın doğulduğu yeridir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37772797.mp3",
+      "reference": "Və Braziliyanın ən böyük futbol klublarından biri hesab olunur.",
+      "hypothesis": "və braziliyanın ən böyük futbol klublarından biri hesab olunur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37772798.mp3",
+      "reference": "Hazırda xarabalıqları qalır.",
+      "hypothesis": "hazırda xarabalıqlar qalır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37772799.mp3",
+      "reference": "Daun sindromu ilə doğulan uşaqlarla erkən məşğul olmaq lazımdır.",
+      "hypothesis": "daun sindromi ilə doğulan şaqlarla erkən məşğul olmaq lazımdır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37772800.mp3",
+      "reference": "Salyan rayonunun Sarvan inzibati ərazi vahidində kənd.",
+      "hypothesis": "salyan rayonunun sarvanincibati ərazi vahidində kənd"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_37772801.mp3",
+      "reference": "Şaxtalı aylarda sahil ərazilər donur.",
+      "hypothesis": "şaxdalı aylarda sahil əracələr donur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36559374.mp3",
+      "reference": "Siyasi mövzularda bir neçə kitabın müəllifidir.",
+      "hypothesis": "siyasi mövzlarda bir nəçə kitabın müəllifliridir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36559378.mp3",
+      "reference": "İon kristallarda meydana gəlir.",
+      "hypothesis": "ion qırıstanlarda meydana gəlir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36559405.mp3",
+      "reference": "Göl Balıqçılıq üçün əlverişlidir.",
+      "hypothesis": "göl balıqçızlıq üçün əlvərişlidir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36559407.mp3",
+      "reference": "Şuşada doktor Mirzə Hüseyn bəy kimi tanınırdı.",
+      "hypothesis": "şuşa da dotor mirzə hüsəy bəy kimi tanınırdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36559408.mp3",
+      "reference": "Bir müddət kikboksinq və futbol ilə məşğul oldu.",
+      "hypothesis": "bir muddat ki bosinqing va futbolilar məcğul oldu"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36559409.mp3",
+      "reference": "Uzun qara geyimləri və quru bir atı vardır.",
+      "hypothesis": "ulun qaragi məri və quru bir atı vardir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36559441.mp3",
+      "reference": "Bütün işlər barışıq hakimi tərəfindən təkbaşına həll edilirdi.",
+      "hypothesis": "bütun müşhlar qarışhıq hakimi tarafindan taq başhina hələdilirdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36559442.mp3",
+      "reference": "Komanda yoldaşları bunun Oliverin mübarizə aparmaq üsulu olduğunu düşünürlər.",
+      "hypothesis": "qomanda yoldaşları bunun olu verim bübazəri aparmaq u sülü olduğunu düşünürlər"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_36559444.mp3",
+      "reference": "Nuri bəy bu ilk cəhdindən böyük qazanc əldə etdi.",
+      "hypothesis": "nuru bəy bu ilk çəhdindan büyük qazanc əldədir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474196.mp3",
+      "reference": "Qurdlar camaatının bir tirəsinin adı idi.",
+      "hypothesis": "qurlar camaatın bir tirəsinin adı idi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474199.mp3",
+      "reference": "Saray kompleksi İran Mədəni İrs Təşkilatı tərəfindən idarə olunur.",
+      "hypothesis": "saray kompleksi i̇ran mədəni ifs təşkilatı tərəfindən idarə olunur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474200.mp3",
+      "reference": "Vətən müharibəsi başlayır.",
+      "hypothesis": "vətən müharibəsi başlayır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474226.mp3",
+      "reference": "Virus qaraciyərdə və qanda tapılar.",
+      "hypothesis": "virus qaraciərdə və qanda taplar"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474229.mp3",
+      "reference": "Ərazisində çöl bitkiləri üstünlük təşkil edir.",
+      "hypothesis": "ərazisində çöl bitkiləri üstünlük təşkil edir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474230.mp3",
+      "reference": "Hərbi xidmətini başa vurduqdan sonra Abbasov Mingəçevir şəhərində elektrik quraşdırma idarəsində çalışıb.",
+      "hypothesis": "hərbi xidmətini başa vurduqdan sonra abasov mingəçəvir şəhərində elektrik quraşdırma idarəhsində çalışıb"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474243.mp3",
+      "reference": "Günəş Yerə ən yaxın ulduzdur.",
+      "hypothesis": "günəş şerə ən yaxın ulduzdur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474245.mp3",
+      "reference": "Elşən Salayev Vətən Müharibəsində qəhrəmancasına şəhid olmuşdur.",
+      "hypothesis": "elşən salaev mətən müharibəsində gəhrəmancasına şəhid olmuşdur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474263.mp3",
+      "reference": "Quyruğu qısa olur.",
+      "hypothesis": "quyruhuksa olur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474264.mp3",
+      "reference": "Mahmud ailənin yeganə oğul övladı olmuşdur.",
+      "hypothesis": "mahmud ailəni yəganə oğul övladı olmuşdur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474265.mp3",
+      "reference": "Kənd təsərrüfatı ərazilərinin boz meşə və açıq boz torpaqlar təşkil edir.",
+      "hypothesis": "kənd təsərrüfatı ərazilərinin boz məşəqə açıq torpaqlar təşkil edir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_40474266.mp3",
+      "reference": "Bunlara ilk növbədə təbii şəraitdə baş verən proseslər üzərində fasiləsiz müşahidələrin aparılması aiddir.",
+      "hypothesis": "bunlara ilk növbədə təbii şəraitdə baş verən proseslər üzərində fasitəsiz müşahidələrin aparılması aiddir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43264086.mp3",
+      "reference": "İndi həmin qədim yolla dəmir yolu xətti çəkilmişdir.",
+      "hypothesis": "i̇ndi həmin qədin yolla dəmir yolu xətti çəkilmişdir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43264088.mp3",
+      "reference": "Böyük İskəndərin çatdığı ən son bölgə olduğu təxmin edilir.",
+      "hypothesis": "böyük iskəndərin çatdığı ən son bölgə olduğu təxmin edilir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43264089.mp3",
+      "reference": "İlk boyu şaxta müşahidə edilir.",
+      "hypothesis": "i̇l boyu şax da müşahidə edilir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284794.mp3",
+      "reference": "Qalaktika topaları qalaktikalar daxilindəki ulduz quruluşları olan ulduz topaları ilə qarışdırılmamalıdır.",
+      "hypothesis": "qalaktika topları qalaktikalar daxilindəki ulduz buruşlları olan ulduz sopaları ilə qarışdırılmamalıdır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284798.mp3",
+      "reference": "Avropanın ticarətlə məşğul olan dairələri Yaxın Şərqdəki mühüm strateji məntəqələri əldə etməkdə maraqlı idilər.",
+      "hypothesis": "avropanın ticarətlə məşğul olan darələri yaxın şərqdəki mühim strateji məntəqələri əldə etməkdə marağıv irdilər"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284804.mp3",
+      "reference": "Bir neçə il sonra ölkəsinə geri dönməsinə icazə verildi.",
+      "hypothesis": "bir neçə il sonra ölkəsinə yerilənməsinə icazə verildi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284805.mp3",
+      "reference": "Kəndin adı onun coğrafi mövqeyini əks etdirir.",
+      "hypothesis": "kəndin adı onun colravı mövveyini əqs etdirir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284806.mp3",
+      "reference": "London işçi ailəsindən gəlirdi.",
+      "hypothesis": "london işçi ailəsindan gəlirdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284808.mp3",
+      "reference": "Hər ikisi sağda olan alay geri çəkilməyə başladı.",
+      "hypothesis": "hər ikkisə sağda olan alageri çəkilməyə başladı"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284814.mp3",
+      "reference": "Öz zəhməti ilə Fransızca öyrəndi.",
+      "hypothesis": "öz zəhmət ilə fransıza öyrəndi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284818.mp3",
+      "reference": "Atası Qustav oğlunu futbolçu kimi görmək istəyirdi.",
+      "hypothesis": "atası qustab olğunuvutbolç üçün gölünə iştəyildi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284832.mp3",
+      "reference": "Şəhərin mərkəzi hissəsi Perl çayının sağ sahilində yerləşir.",
+      "hypothesis": "şəhərin mərkəzi hissəsi pellçayının sağs ayında yerləşir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284836.mp3",
+      "reference": "Buna görə rayonu bir neçə hissəyə bölmək məcburi olmuşdu.",
+      "hypothesis": "ona görə rayonı bir neçə hissəyə bölmək məcburü olmuşdu"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_43284838.mp3",
+      "reference": "Bu teatrın əsas vəzifəsi fəhlələr və kasıblar arasında bolşevik təbliğatı aparmaq olmuşdur.",
+      "hypothesis": "bu teatırın əsas vəzikəçi fərkələr və kasxar arasında bolşeyvik təvriqi hatı aparmaq olmuşdur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658771.mp3",
+      "reference": "Təlim mərkəzlərindən birinə edilən sirli hücumun ardından iki ən yaxşı döyüşçü tədqiqata başlayır.",
+      "hypothesis": "təlim mərkəzlərindən birinə edilən sirli hücumun ardından iki ən yaxşı döyüksü tədqiqata başlayır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658772.mp3",
+      "reference": "Orta təhsilini Ağdam rayonunda alıb.",
+      "hypothesis": "orta təhsilini ağdom rayonunda alıb"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658773.mp3",
+      "reference": "Estetik mənada konkret təbiət gözəllikləri ümumən yenə gözəl bir qadınla birlikdə təqdim edilir.",
+      "hypothesis": "estitik manada konkret təbiət gözəldikləri ümumən yenə gözəl bir qadınla birlikdə təqdim edilir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658774.mp3",
+      "reference": "Strabon özünün məşhur Tarix əsərində də Abxaziya ərazisi və orada yaşayan xalqlar barədə yazmışdı.",
+      "hypothesis": "starbun özünün məşhur tarix əsərində abxaziya ərazisi və orada yaşayan xalqlar barədə yazmışdı"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658775.mp3",
+      "reference": "Sovet mədəniyyət və incəsənət nümayəndə heyətinin tərkibində Amerika və Afrika ölkələrində olmuşdur.",
+      "hypothesis": "sovyet mədəniyyət və indi sənət nümayyəndə həyyətinin təcibində amerika və afrika ölkələrində olumuşdu"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658842.mp3",
+      "reference": "Diplomunu aldığı zaman casusluq vəzifəsinin hissəsi olan bir əmr altında Moskvanı tərk etdi.",
+      "hypothesis": "diplonnu aldığı zaman casçluq vəzifəsinin hissəsi olan bir əmr altında moskuvanı tərk etdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658844.mp3",
+      "reference": "Alimin rəhbərliyi ilə onlarla elmlər namizədi hazırlanmışdır.",
+      "hypothesis": "alimin rəhbərliyi ilə onlarla felmlər nalizədə hazırlanmışdır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658847.mp3",
+      "reference": "Körpünün yerləşdiyi Qarabağ məhəlləsi Zəngəzur mahalından qaçıb bura gələnlərin adı ilə adlanıb.",
+      "hypothesis": "körpünün yerləşdiyi qarabaq məhəlləsi zəngüzül məhallından qaçıq bura gələnlərin adilə adlanıb"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658848.mp3",
+      "reference": "Çimərlik ərazidə Kanadanın ən uzun hovuzu yerləşir.",
+      "hypothesis": "timəllik ərazidə kanadanın ən uzun hovuzu yerləşir"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658850.mp3",
+      "reference": "Çünki o yoxdur.",
+      "hypothesis": "çünki o yoxdur"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658898.mp3",
+      "reference": "Bəzi televiziya sənədli filmlərinin məsləhətçisi idi.",
+      "hypothesis": "baziyə televiziya sənədli filmlərinin məsləhətçisi idi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658900.mp3",
+      "reference": "Göldə mülayim iqlim şəraiti hökm sürür.",
+      "hypothesis": "göldə mülayim iqlim şərakə üçün süzür"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658901.mp3",
+      "reference": "Goranboy rayonu Fəxralı kənd tam orta məktəbi şəhid Teymur Sadıqovun adını daşıyır.",
+      "hypothesis": "koronbo udoyanu fəxralı kənd tamoto məktəbi şəhid teymur sadı quvunadına daşıyır"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658902.mp3",
+      "reference": "Rəhbərlik öz siyasətində və iqtisadiyyatında dəyişikliklər tələb etdi.",
+      "hypothesis": "rəhbərilik öz siyasətində və iqtisadyatında dəyişikliklər tələb etdi"
+    },
+    {
+      "sample_id": "cv25-common_voice_az_26658903.mp3",
+      "reference": "Sadalanan üsullardan savayı ermənilər Vaşinqtonda təsir qrupları da yaratmağa nail olurlar.",
+      "hypothesis": "sadalanan üsullardan savai ermənilər vaşinqtonda təsir qrupları yaratmağa naid olurlar"
+    }
+  ]
+}
