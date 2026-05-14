@@ -55,7 +55,7 @@ Evaluation on the FLEURS `az_az` test split (`n = 923`).
 | Whisper Base | 74M | 82.1% | 30.1% | 65s |
 | Whisper Small | 244M | 51.7% | 14.4% | 161s |
 | Whisper Medium | 769M | 34.3% | 9.0% | 597s |
-| Whisper Large-v3 | 1550M | **21.7%** | 5.9% | — |
+| Whisper Large-v3 | 1550M | **21.7%** | 5.9% | 1045s |
 | MMS-1B (Azerbaijani) | 1B | 23.8% | **5.3%** | 91s |
 
 ### Key Observations
@@ -71,6 +71,42 @@ Source-of-truth results are stored in:
 ```text
 results/benchmark.json
 ````
+
+---
+
+## Benchmark Results (Common Voice 25 Azerbaijani)
+
+Evaluation on the Common Voice 25.0 `az` test split (`n = 126`), loaded from the Mozilla Data Collective tarball.
+
+| Model | Params | WER ↓ | CER ↓ | Runtime |
+|---|---:|---:|---:|---:|
+| Whisper Tiny | 39M | 101.7% | 62.2% | 11s |
+| Whisper Base | 74M | 102.0% | 44.6% | 12s |
+| Whisper Small | 244M | 62.8% | 20.0% | 16s |
+| Whisper Medium | 769M | 42.1% | 12.2% | 41s |
+| Whisper Large-v3 | 1550M | **26.5%** | 6.9% | 75s |
+| MMS-1B (Azerbaijani) | 1B | 28.3% | **6.3%** | 15s |
+
+### Key Observations
+
+- `whisper-base` is worse than `whisper-tiny` on CV-25 (hallucinates long outputs, pushing WER past 100%).
+- The first useful jump in model scale is `base → small`.
+- The "MMS wins on CER, Whisper-large wins on WER" pattern from FLEURS holds on CV-25 too — a consistent systematic difference in failure modes across two independent test sets.
+
+---
+
+## Domain Shift: FLEURS → Common Voice 25
+
+Every model is worse on CV-25 (crowd-sourced, noisy) than on FLEURS-az (clean read speech). The shift is largest for the smallest models and shrinks with scale — larger models are more robust to recording conditions and speaker variation.
+
+| Model | FLEURS WER | CV-25 WER | Δ WER | FLEURS CER | CV-25 CER | Δ CER |
+|---|---:|---:|---:|---:|---:|---:|
+| Whisper Tiny | 101.8% | 101.7% | -0.1 | 50.4% | 62.2% | +11.8 |
+| Whisper Base | 82.1% | 102.0% | **+19.9** | 30.1% | 44.6% | +14.5 |
+| Whisper Small | 51.7% | 62.8% | +11.1 | 14.4% | 20.0% | +5.6 |
+| Whisper Medium | 34.3% | 42.1% | +7.8 | 9.0% | 12.2% | +3.2 |
+| Whisper Large-v3 | 21.7% | 26.5% | +4.8 | 5.9% | 6.9% | +1.0 |
+| MMS-1B | 23.8% | 28.3% | +4.5 | 5.3% | 6.3% | +1.0 |
 
 ---
 
@@ -114,7 +150,7 @@ Turkish interference replacing Azerbaijani orthography.
 
 ```text
 src/
-  data.py             # CV-17 (az) and FLEURS (az_az) loaders
+  data.py             # CV-25 (az, local MDC tarball) and FLEURS (az_az, HF) loaders
   benchmark.py        # Whisper tiny..large-v3 benchmark
   eval_mms.py         # MMS-1B baseline evaluation
   train_lora.py       # PEFT/LoRA fine-tuning
@@ -122,12 +158,18 @@ src/
   push_to_hub.py      # Hugging Face upload helper
 
 results/
-  benchmark.json
-  error_analysis.csv
-  transcripts/
+  benchmark.json                  # WER/CER table (model × dataset)
+  error_analysis.csv              # per-sentence errors for manual taxonomy
+  transcripts/                    # per-sample (ref, hyp) pairs for every run
+
+data/
+  cv25-az/                        # extracted Common Voice 25.0 MDC tarball (gitignored)
+    cv-corpus-25.0-.../az/
+      train.tsv, dev.tsv, test.tsv
+      clips/
 
 models/
-  whisper-small-az-lora/
+  whisper-small-az-lora/          # fine-tuned LoRA adapter (gitignored)
 ```
 
 ---
@@ -203,12 +245,18 @@ python -m src.benchmark --model whisper-small-az-lora --dataset all
 
 ## Datasets
 
-### Common Voice 17
+### Common Voice 25.0 Azerbaijani
 
 Used for:
 
-* LoRA fine-tuning
-* additional evaluation
+* cross-domain benchmark evaluation (crowd-sourced speech)
+* LoRA fine-tuning (planned)
+
+Distribution:
+
+* As of October 2025, Mozilla distributes Common Voice exclusively through **[Mozilla Data Collective](https://mozilladatacollective.com/)** — the `mozilla-foundation/common_voice_*` HF Hub repos are no longer programmatically accessible.
+* Sign up for an MDC account, request the Azerbaijani dataset, and download the tarball. Extract to `data/cv25-az/`. The loader in `src/data.py` reads directly from the extracted directory.
+* CV-25 az is small: 215 train / 93 dev / 126 test utterances.
 
 License:
 
@@ -218,7 +266,7 @@ License:
 
 Used for:
 
-* multilingual benchmark evaluation
+* primary read-speech benchmark
 * cross-model comparison
 
 License:
@@ -229,10 +277,9 @@ License:
 
 ## Planned Work
 
-* Add Common Voice benchmark tables
-* Publish LoRA checkpoints
+* Publish LoRA fine-tuned checkpoint to Hugging Face
+* Expand linguistic error taxonomy (manual labeling of ~200 worst FLEURS-az errors)
 * Add inference speed / VRAM benchmarks
-* Expand linguistic error taxonomy
 * Evaluate distillation approaches
 * Compare against SeamlessM4T and Canary
 
