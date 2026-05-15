@@ -1,0 +1,13 @@
+Total error sentences: 923
+Categorized: 923
+Uncategorized (blank): 0
+
+Counts by category:
+  numerals               211  (22.9%)
+  named_entity           222  (24.1%)
+  code_switch_ru           0  ( 0.0%)
+  code_switch_tr_en        0  ( 0.0%)
+  az_letters             174  (18.9%)
+  dialect                  0  ( 0.0%)
+  audio_quality            0  ( 0.0%)
+  other                  316  (34.2%)
