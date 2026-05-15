@@ -1,14 +1,22 @@
-"""LoRA fine-tune Whisper-small on Common Voice-17 (az).
+"""LoRA fine-tune Whisper-small on Azerbaijani speech.
 
-Saves the adapter to `models/whisper-small-az-lora/`. Final WER is measured separately
-via `python -m src.benchmark --model whisper-small-az-lora --lora-path ...` — keeping
-training and eval split avoids known PEFT + Seq2SeqTrainer.predict_with_generate quirks.
+Default training data is FLEURS-az `train` (2665 utts) + CV-25 az `train` (215 utts),
+shuffled together to ~2880 total. CV-25 alone is too small to fine-tune on. The
+eval-during-training set is FLEURS-az `validation` (400 utts) since it's the larger,
+cleaner signal. Final test-set WER is measured separately via `src.benchmark` with
+the adapter loaded.
+
+Saves the adapter to `models/whisper-small-az-lora/`.
 
 Sanity check (50 steps, ~5 min):
     python -m src.train_lora --max-steps 50 --eval-steps 25 --max-train-samples 200
 
-Full run (5 epochs):
+Full run (5 epochs, ~1-2 h on RTX 5070):
     python -m src.train_lora
+
+Train on a single corpus instead:
+    python -m src.train_lora --train-dataset fleurs
+    python -m src.train_lora --train-dataset common_voice
 """
 
 from __future__ import annotations
@@ -18,6 +26,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import torch
+from datasets import Dataset, concatenate_datasets
 from peft import LoraConfig, get_peft_model
 from transformers import (
     Seq2SeqTrainer,
@@ -55,15 +64,44 @@ class WhisperDataCollator:
 
 
 def make_prepare(processor: WhisperProcessor):
+    """Build the per-example feature extractor. Expects `{audio, reference}` columns."""
+
     def _prep(example: dict) -> dict:
         audio = example["audio"]
         feats = processor.feature_extractor(
             audio["array"], sampling_rate=SAMPLING_RATE
         ).input_features[0]
-        labels = processor.tokenizer(example["sentence"]).input_ids
+        labels = processor.tokenizer(example["reference"]).input_ids
         return {"input_features": feats, "labels": labels}
 
     return _prep
+
+
+def _to_audio_reference(name: str, split: str, max_samples: int | None) -> Dataset:
+    """Load a split and project to a uniform `{audio, reference}` schema."""
+    ds = load_split(name, split, max_samples=max_samples)
+    if name == "fleurs":
+        ds = ds.rename_columns({"transcription": "reference"})
+    # CV-25 already has 'reference' (renamed inside data.py).
+    keep = ["audio", "reference"]
+    drop = [c for c in ds.column_names if c not in keep]
+    return ds.remove_columns(drop)
+
+
+def load_train_data(choice: str, max_samples: int | None) -> Dataset:
+    """Load training data based on --train-dataset selection."""
+    if choice == "fleurs":
+        return _to_audio_reference("fleurs", "train", max_samples)
+    if choice == "common_voice":
+        return _to_audio_reference("common_voice", "train", max_samples)
+    if choice == "combined":
+        f = _to_audio_reference("fleurs", "train", None)
+        c = _to_audio_reference("common_voice", "train", None)
+        merged = concatenate_datasets([f, c]).shuffle(seed=42)
+        if max_samples is not None:
+            merged = merged.select(range(min(max_samples, len(merged))))
+        return merged
+    raise ValueError(f"Unknown --train-dataset {choice!r}")
 
 
 def parse_args() -> argparse.Namespace:
@@ -86,6 +124,12 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--lora-dropout", type=float, default=0.05)
     p.add_argument("--max-train-samples", type=int, default=None)
     p.add_argument("--max-eval-samples", type=int, default=None)
+    p.add_argument(
+        "--train-dataset",
+        choices=["combined", "fleurs", "common_voice"],
+        default="combined",
+        help="Training data source. 'combined' = FLEURS-az train + CV-25 az train, shuffled.",
+    )
     p.add_argument("--output-dir", default=str(OUTPUT_DIR))
     return p.parse_args()
 
@@ -97,8 +141,10 @@ def main() -> None:
         BASE_MODEL, language="azerbaijani", task="transcribe"
     )
 
-    train_ds = load_split("common_voice", "train", max_samples=args.max_train_samples)
-    val_ds = load_split("common_voice", "validation", max_samples=args.max_eval_samples)
+    train_ds = load_train_data(args.train_dataset, max_samples=args.max_train_samples)
+    val_ds = _to_audio_reference("fleurs", "validation", max_samples=args.max_eval_samples)
+    print(f"train: {len(train_ds)} samples ({args.train_dataset})")
+    print(f"eval:  {len(val_ds)} samples (fleurs/validation)")
 
     prep = make_prepare(processor)
     train_ds = train_ds.map(prep, remove_columns=train_ds.column_names, num_proc=1)
