@@ -60,6 +60,18 @@
     "timestamp": "2026-05-14T04:35:30Z"
   },
   {
+    "model": "whisper-small-az-lora",
+    "dataset": "common_voice",
+    "split": "test",
+    "n_samples": 126,
+    "wer": 0.4075,
+    "cer": 0.1223,
+    "elapsed_seconds": 29.8,
+    "lora_path": "models\\whisper-small-az-lora",
+    "transcripts_path": "results\\transcripts\\whisper-small-az-lora_common_voice_test.json",
+    "timestamp": "2026-05-15T20:38:34Z"
+  },
+  {
     "model": "whisper-tiny",
     "dataset": "common_voice",
     "split": "test",
@@ -130,6 +142,18 @@
     "lora_path": null,
     "transcripts_path": "results\\transcripts\\whisper-small_fleurs_test.json",
     "timestamp": "2026-05-14T16:05:34Z"
+  },
+  {
+    "model": "whisper-small-az-lora",
+    "dataset": "fleurs",
+    "split": "test",
+    "n_samples": 923,
+    "wer": 0.3497,
+    "cer": 0.0968,
+    "elapsed_seconds": 319.8,
+    "lora_path": "models\\whisper-small-az-lora",
+    "transcripts_path": "results\\transcripts\\whisper-small-az-lora_fleurs_test.json",
+    "timestamp": "2026-05-15T20:37:56Z"
   },
   {
     "model": "whisper-tiny",

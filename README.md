@@ -110,6 +110,44 @@ Every model is worse on CV-25 (crowd-sourced, noisy) than on FLEURS-az (clean re
 
 ---
 
+## LoRA Fine-Tuning Results
+
+A parameter-efficient LoRA adapter was trained on top of `openai/whisper-small`, using FLEURS-az `train` (2665 utts) + Common Voice 25 az `train` (215 utts) — ~2880 samples combined. **Only ~13M trainable parameters (5.1% of the base model), 51 MB on disk.** Training took ~58 min on an RTX 5070 Laptop (5 epochs, batch 8 × accum 2, lr 1e-4, FLEURS validation eval-loss 1.40 → 0.51).
+
+| Model | Params (trainable) | FLEURS WER | FLEURS CER | CV-25 WER | CV-25 CER |
+|---|---:|---:|---:|---:|---:|
+| Whisper Small (base) | 244M | 51.7% | 14.4% | 62.8% | 20.0% |
+| **Whisper Small + LoRA (ours)** | 244M + 13M | **35.0%** | **9.7%** | **40.7%** | **12.2%** |
+| Whisper Medium (3× bigger) | 769M | 34.3% | 9.0% | 42.1% | 12.2% |
+| Whisper Large-v3 (6× bigger) | 1550M | 21.7% | 5.9% | 26.5% | 6.9% |
+
+### Key Result
+
+The LoRA adapter brings `whisper-small` to **medium-size performance** on FLEURS (35.0% vs 34.3% WER) and **beats whisper-medium on the noisy CV-25 test set** (40.7% vs 42.1% WER) — using a base model 1/3 the size and an adapter file of just 51 MB. Relative WER reduction over baseline:
+
+- FLEURS-az: **−32%** WER (51.7 → 35.0)
+- CV-25 az:  **−35%** WER (62.8 → 40.7)
+
+The adapter does not yet match `large-v3` or MMS-1B, but for offline deployment where compute/VRAM matters, `whisper-small + LoRA` is the strongest small-footprint option.
+
+### Reproducing
+
+```bash
+# Sanity check (~5 min)
+python -m src.train_lora --max-steps 50 --eval-steps 25 --max-train-samples 200
+
+# Full run (~1 h on RTX 5070)
+python -m src.train_lora
+
+# Evaluate the resulting adapter on both test sets
+python -m src.benchmark --model whisper-small-az-lora --lora-path models/whisper-small-az-lora --dataset fleurs
+python -m src.benchmark --model whisper-small-az-lora --lora-path models/whisper-small-az-lora --dataset common_voice
+```
+
+Per-step training loss curve is in `results/train_lora_history.txt`.
+
+---
+
 ## Example Transcription
 
 Ground truth:
@@ -250,7 +288,7 @@ python -m src.benchmark --model whisper-small-az-lora --dataset all
 Used for:
 
 * cross-domain benchmark evaluation (crowd-sourced speech)
-* LoRA fine-tuning (planned)
+* LoRA fine-tuning (combined with FLEURS-az train)
 
 Distribution:
 
